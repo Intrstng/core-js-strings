@@ -309,8 +309,15 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = 'aeiouy';
+  let counter = 0;
+  for (let i = 0; i <= str.length - 1; i += 1) {
+    if (vowels.includes(str[i].toLowerCase())) {
+      counter += 1;
+    }
+  }
+  return counter;
 }
 
 /**
@@ -326,8 +333,22 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const word = str
+    .toLowerCase()
+    .split('')
+    .filter((letter, idx) => {
+      return (
+        str.toLowerCase().charCodeAt(idx) >= 90 &&
+        str.toLowerCase().charCodeAt(idx) <= 122
+      );
+    });
+  for (let i = 0; i < Math.floor(word.length / 2); i += 1) {
+    if (word[i] !== word[word.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -342,8 +363,15 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  let longestWord = '';
+  const arr = sentence.split(' ');
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i].length > longestWord.length) {
+      longestWord = arr[i];
+    }
+  }
+  return longestWord;
 }
 
 /**
@@ -356,8 +384,11 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  return str
+    .split(' ')
+    .map((word) => word.split('').reverse().join(''))
+    .join(' ');
 }
 
 /**
@@ -371,8 +402,15 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  return str
+    .split('')
+    .map((letter) => {
+      return letter === letter.toUpperCase()
+        ? letter.toLowerCase()
+        : letter.toUpperCase();
+    })
+    .join('');
 }
 
 /**
